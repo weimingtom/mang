@@ -2,6 +2,9 @@ body{
   background-color: #eaeaea;
 }
 
+body main {
+  padding: 20px;
+}
 
 .md-sidenav-backdrop.md-opaque.ng-scope.md-default-theme{
   position: fixed;
@@ -42,8 +45,16 @@ header{
 
 
 
-.component{
-  max-width: 200px;
+.folder-tile{
+  background-color: white;
+}
+.folder-tile md-icon {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+.folder-tile h3{
+  display: block;
 }
 
 

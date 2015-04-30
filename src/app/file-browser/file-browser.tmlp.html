@@ -1,1 +1,11 @@
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus nam, quam rerum odit esse, pariatur dicta in. Quae velit consectetur illo iste! Id magni animi ad vitae, ea placeat nesciunt.
+<md-grid-list
+        md-cols-sm="2" md-cols-md="4" md-cols-gt-md="8"
+        md-row-height="1:1"
+        md-gutter="12px" md-gutter-gt-sm="8px" >
+  <md-grid-tile ng-repeat="file in vm.data.files" class="folder-tile">
+    <md-icon md-svg-icon="file:folder"></md-icon>
+    <md-grid-tile-footer>
+      <h3>{{file.name}}</h3>
+    </md-grid-tile-footer>
+  </md-grid-tile>
+</md-grid-list>

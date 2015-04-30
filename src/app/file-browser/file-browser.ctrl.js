@@ -5,9 +5,20 @@
     .module('mang')
     .controller('FileBrowserCtrl', FileBrowserCtrl);
 
-  function FileBrowserCtrl () {
+  FileBrowserCtrl.$inject = ['FilesSvc']
+
+  function FileBrowserCtrl (FilesSvc) {
     var vm = this;
-    // var mellow = ;
+
+    activate();
+
+    function activate () {
+      vm.data = {};
+      vm.data = FilesSvc.getInitialData('/');
+    }
+
+
+
   }
 
 })();
