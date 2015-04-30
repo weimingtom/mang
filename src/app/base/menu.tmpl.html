@@ -1,7 +1,7 @@
 <div ng-controller="MenuCtrl as vm">
   <md-sidenav md-component-id="menu" class="md-sidenav-left">
     <md-list>
-      <md-list-item ng-repeat="section in vm.sections" ng-click="vm.navigateTo($index)"
+      <md-list-item ng-repeat="section in vm.sections" ng-click="vm.navigateTo(section.url, $index)"
                     ng-class="{active: vm.isSelected($index)}">
         <md-icon md-svg-icon="{{section.icon}}"></md-icon>
         <p> {{ section.name }} </p>

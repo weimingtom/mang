@@ -5,19 +5,21 @@
     .module('mang')
     .controller('MenuCtrl', MenuCtrl);
 
-  MenuCtrl.$inject = ['$mdSidenav'];
+  MenuCtrl.$inject = ['$mdSidenav', '$location'];
 
-  function MenuCtrl ($mdSidenav) {
+  function MenuCtrl ($mdSidenav, $location) {
     var vm = this;
 
     vm.sections = [
       {
         name: 'Home',
-        icon: 'action:home'
+        icon: 'action:home',
+        url: '/'
       },
       {
         name: 'Browser',
-        icon: 'action:explore'
+        icon: 'action:explore',
+        url: 'browser/'
       }
     ];
 
@@ -25,7 +27,8 @@
     vm.navigateTo = navigateTo;
     vm.isSelected = isSelected;
 
-    function navigateTo (index) {
+    function navigateTo (url, index) {
+      $location.path(url);
       vm.selectedIndex = index;
       $mdSidenav('menu')
         .close();

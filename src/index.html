@@ -7,19 +7,23 @@
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
   <link rel="stylesheet" href="app/main.css">
 </head>
-<body ng-app="mang">
+<body ng-app="mang" layout="column" layout-fill>
 
   <div ng-include="'app/base/header.tmpl.html'"></div>
   <div ng-include="'app/base/menu.tmpl.html'"></div>
+
+  <main flex ng-view></main>
 
   <!-- JS libs -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-aria/angular-aria.min.js"></script>
   <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.min.js"></script>
   <script src="bower_components/angular-material/angular-material.min.js"></script>
   <!-- App -->
   <script src="app/app.js"></script>
   <script src="app/base/header.ctrl.js"></script>
   <script src="app/base/menu.ctrl.js"></script>
+  <script src="app/file-browser/file-browser.ctrl.js"></script>
 </body>
 </html>
