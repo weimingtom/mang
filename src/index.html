@@ -5,10 +5,11 @@
   <title>Hello world</title>
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+  <link rel="stylesheet" href="app/main.css">
 </head>
 <body ng-app="mang">
 
-  <md-button>Hello world</md-button>
+  <div ng-include="'app/base/header.tmpl.html'"></div>
 
   <!-- JS libs -->
   <script src="bower_components/angular/angular.js"></script>

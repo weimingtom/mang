@@ -1,0 +1,35 @@
+md-icon{
+  width: 20px;
+  height:20px;
+}
+#system-bar{
+  background-color: #009ab2;
+  -webkit-app-region: drag;
+}
+#system-bar .controls{
+  float: right;
+  padding: 0 8px;
+}
+#system-bar .controls md-icon{
+  padding: 4px;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
+#system-bar .controls md-icon:hover{
+  padding: 4px;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
