@@ -5,13 +5,16 @@
     .module('mang')
     .controller('HeaderCtrl', HeaderCtrl);
 
-  function HeaderCtrl () {
+    HeaderCtrl.$inject = ['$mdSidenav'];
+
+  function HeaderCtrl ($mdSidenav) {
     var Window = require('nw.gui').Window.get();
     var vm = this;
 
     vm.minimize = minimize;
     vm.maximize = maximize;
     vm.close = close;
+    vm.openMenu = openMenu;
 
     Window.on('maximize', function(){
       vm.isMaximized = true;
@@ -34,6 +37,11 @@
 
     function close () {
       Window.close();
+    }
+
+    function openMenu () {
+      $mdSidenav('menu')
+        .open();
     }
   }
 })();

@@ -1,14 +1,14 @@
-<div id="system-bar" class="clearfix" ng-controller="HeaderCtrl as vm">
-  <div class="controls">
-    <md-icon md-svg-icon="content:remove" ng-click="vm.minimize()"></md-icon>
-    <md-icon md-svg-icon="navigation:fullscreen" ng-click="vm.maximize()"></md-icon>
-    <md-icon md-svg-icon="content:clear" ng-click="vm.close()"></md-icon>
+<header ng-controller="HeaderCtrl as vm">
+  <div id="system-bar" class="clearfix" >
+    <div class="controls">
+      <md-icon md-svg-icon="content:remove" ng-click="vm.minimize()"></md-icon>
+      <md-icon md-svg-icon="navigation:fullscreen" ng-click="vm.maximize()"></md-icon>
+      <md-icon md-svg-icon="content:clear" ng-click="vm.close()"></md-icon>
+    </div>
   </div>
-</div>
-<header>
   <md-toolbar>
     <div class="md-toolbar-tools">
-      <md-button class="md-icon-button" aria-label="menu">
+      <md-button class="md-icon-button" aria-label="menu" ng-click="vm.openMenu()">
         <md-icon md-svg-icon="navigation:menu"></md-icon>
       </md-button>
       <h2>

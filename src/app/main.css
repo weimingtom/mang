@@ -1,6 +1,15 @@
 body{
   background-color: #eaeaea;
 }
+
+
+.md-sidenav-backdrop.md-opaque.ng-scope.md-default-theme{
+  position: fixed;
+}
+md-list-item.active, md-list-item.active md-icon, md-list-item.active p{
+  color: #00BCD4;
+  font-weight: bold;
+}
 /***************************/
 /*  System-bar and header  */
 /***************************/

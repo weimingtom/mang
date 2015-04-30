@@ -4,7 +4,10 @@
   "description": "A beautiful manga reader create with NW.js and Angular.js",
   "main": "src/index.html",
   "window": {
-    "frame": false
+    "frame": false,
+    "width": 1024,
+    "height": 720
+
   },
   "repository": {
     "type": "git",
