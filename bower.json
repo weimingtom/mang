@@ -24,5 +24,8 @@
     "src/bower_components/",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular-material": "master"
+  }
 }
