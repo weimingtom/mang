@@ -13,9 +13,8 @@ md-list-item.active, md-list-item.active md-icon, md-list-item.active p{
 /***************************/
 /*  System-bar and header  */
 /***************************/
-md-icon{
-  width: 20px;
-  height:20px;
+header{
+  -webkit-user-select: none;
 }
 #system-bar{
   background-color: #009ab2;
@@ -40,6 +39,13 @@ md-icon{
 #system-bar .controls md-icon:focus{
   outline: none;
 }
+
+
+
+.component{
+  max-width: 200px;
+}
+
 
 .clearfix:after {
   visibility: hidden;

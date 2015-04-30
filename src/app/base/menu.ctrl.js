@@ -5,7 +5,9 @@
     .module('mang')
     .controller('MenuCtrl', MenuCtrl);
 
-  function MenuCtrl () {
+  MenuCtrl.$inject = ['$mdSidenav'];
+
+  function MenuCtrl ($mdSidenav) {
     var vm = this;
 
     vm.sections = [
@@ -16,10 +18,6 @@
       {
         name: 'Browser',
         icon: 'action:explore'
-      },
-      {
-        name: 'Unpack',
-        icon: 'action:input'
       }
     ];
 
@@ -29,6 +27,8 @@
 
     function navigateTo (index) {
       vm.selectedIndex = index;
+      $mdSidenav('menu')
+        .close();
     }
 
     function isSelected (index) {
