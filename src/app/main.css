@@ -1,3 +1,9 @@
+body{
+  background-color: #eaeaea;
+}
+/***************************/
+/*  System-bar and header  */
+/***************************/
 md-icon{
   width: 20px;
   height:20px;
@@ -15,10 +21,15 @@ md-icon{
   cursor: pointer;
   width: 18px;
   height: 18px;
+  -webkit-app-region: no-drag;
 }
 
 #system-bar .controls md-icon:hover{
-  padding: 4px;
+  color: #000;
+}
+
+#system-bar .controls md-icon:focus{
+  outline: none;
 }
 
 .clearfix:after {

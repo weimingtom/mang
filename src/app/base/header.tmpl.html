@@ -1,8 +1,8 @@
-<div id="system-bar" class="clearfix">
+<div id="system-bar" class="clearfix" ng-controller="HeaderCtrl as vm">
   <div class="controls">
-    <md-icon md-svg-icon="content:remove"></md-icon>
-    <md-icon md-svg-icon="navigation:fullscreen"></md-icon>
-    <md-icon md-svg-icon="content:clear"></md-icon>
+    <md-icon md-svg-icon="content:remove" ng-click="vm.minimize()"></md-icon>
+    <md-icon md-svg-icon="navigation:fullscreen" ng-click="vm.maximize()"></md-icon>
+    <md-icon md-svg-icon="content:clear" ng-click="vm.close()"></md-icon>
   </div>
 </div>
 <header>
