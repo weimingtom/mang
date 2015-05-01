@@ -1,5 +1,10 @@
 <div ng-controller="MenuCtrl as vm">
   <md-sidenav md-component-id="menu" class="md-sidenav-left">
+    <md-toolbar>
+      <div class="md-tollbar-tools">
+        <h1 class="logo">Mang</h1>
+      </div>
+    </md-toolbar>
     <md-list>
       <md-list-item ng-repeat="section in vm.sections" ng-click="vm.navigateTo(section.url, $index)"
                     ng-class="{active: vm.isSelected($index)}">
