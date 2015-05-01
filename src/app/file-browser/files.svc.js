@@ -21,9 +21,6 @@
     return service;
 
     function _getInitialData (path) {
-      if (service.data.path != '/') {
-        path += service.data.path;
-      }
       _setData(path);
       return service.data;
     }
@@ -34,11 +31,22 @@
     }
 
     function _setData (path){
+      console.log(path, 'como llega')
+      if (path != '/')
+        path = mellow.pathToWin('/' + path);
+      console.log(path, 'inside')
       mellow.read(path, function (err, data){
         console.log(data);
         service.data.files = data.files.slice();
-        service.data.path = data.path;
+        service.data.path = _setPath(data.path);
       });
+    }
+
+    function _setPath (path) {
+      path = path.replace('\\/', '/');
+      path = path.replace(':', '');
+      path = path.replace('\\', '/');
+      return path;
     }
 
     function _filterFiles (data) {
