@@ -5,16 +5,20 @@
     .module('mang')
     .controller('FileBrowserCtrl', FileBrowserCtrl);
 
-  FileBrowserCtrl.$inject = ['FilesSvc']
+  FileBrowserCtrl.$inject = ['$routeParams', 'FilesSvc'];
 
-  function FileBrowserCtrl (FilesSvc) {
+  function FileBrowserCtrl ($routeParams, FilesSvc) {
     var vm = this;
 
     activate();
 
     function activate () {
       vm.data = {};
-      vm.data = FilesSvc.getInitialData('/');
+      var path = $routeParams.path;
+      if (path != 'root')
+        vm.data = FilesSvc.getInitialData(path);
+      else
+        vm.data = FilesSvc.getInitialData('/');
     }
 
 
