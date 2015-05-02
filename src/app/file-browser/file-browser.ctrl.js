@@ -35,7 +35,7 @@
       else
         newUrl = url;
       newUrl = encodeURIComponent(newUrl);
-      newUrl = 'browser/' + newUrl;
+      // newUrl = 'browser/' + newUrl;
       return newUrl;
     }
 

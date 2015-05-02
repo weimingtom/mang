@@ -19,7 +19,7 @@
       {
         name: 'Browser',
         icon: 'action:explore',
-        url: 'browser/root'
+        url: '/root'
       }
     ];
 

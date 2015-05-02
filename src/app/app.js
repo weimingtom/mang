@@ -26,7 +26,7 @@
           .primaryPalette('cyan');
 
         $routeProvider
-          .when('/browser/:path', {
+          .when('/:path', {
             templateUrl: 'app/file-browser/file-browser.tmlp.html',
             controller: 'FileBrowserCtrl',
             controllerAs: 'vm'
