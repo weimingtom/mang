@@ -11,13 +11,13 @@
 
     var service = {
       data: {},
-      getData: _getData,
-      filterFiles: _filterFiles
+      getData: getData,
+      getImageSrc: getImageSrc
     }
 
     return service;
 
-    function _getData (path) {
+    function getData (path) {
       _setData(path);
       return service.data;
     }
@@ -26,7 +26,8 @@
       if (path != '/')
         path = mellow.pathToWin('/' + path);
       mellow.read(path, function (err, data){
-        service.data.files = _filterFiles(data.files);
+        _filterFiles(data.files);
+        service._path = data.path;
         service.data.path = _setPath(data.path);
       });
     }
@@ -39,7 +40,8 @@
     }
 
     function _filterFiles (data) {
-      var files = [];
+      var dirs = [];
+      var images = [];
       for (var i = 0; i < data.length - 1; i++) {
         /**
          * When mellow read the directory data assign a size value for each item,
@@ -52,16 +54,24 @@
            * To dont add system hidden folders
            */
           if(ext[0] != '.' && data[i].name[0] != '.')
-            files.push(data[i]);
+            dirs.push(data[i]);
         }else{
           // if ext is in array
           if (_AllowedExt.indexOf(ext) > -1){
-              files.push(data[i]);
+              images.push(data[i]);
           }
         }
       }
 
-      return files;
+      service.data.dirs = dirs;
+      service.data.images = images;
+    }
+
+    function getImageSrc (img) {
+      var src = service._path + img.name;
+      src = encodeURI(src);
+      src = src.replace('#', '%23');
+      return src;
     }
 
 

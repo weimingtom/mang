@@ -1,12 +1,26 @@
 <md-grid-list
         md-cols-sm="2" md-cols-md="4" md-cols-gt-md="8"
         md-row-height="1:1"
-        md-gutter="12px" md-gutter-gt-sm="8px" >
-  <md-grid-tile ng-repeat="file in vm.data.files" class="folder-tile"
-                ng-click="vm.navigateTo(file.name)">
+        md-gutter="12px" md-gutter-gt-sm="8px" ng-class="browser-folders">
+  <md-grid-tile ng-repeat="dir in vm.data.dirs" class="folder-tile"
+                ng-click="vm.navigateTo(dir.name)">
     <md-icon md-svg-icon="file:folder"></md-icon>
     <md-grid-tile-footer>
-      <h3>{{file.name}}</h3>
+      <h3>{{dir.name}}</h3>
     </md-grid-tile-footer>
   </md-grid-tile>
 </md-grid-list>
+
+<md-grid-list
+        md-cols-sm="2" md-cols-md="4" md-cols-gt-md="8"
+        md-row-height="1:1"
+        md-gutter="12px" md-gutter-gt-sm="8px" class="browser-images">
+  <md-grid-tile ng-repeat="image in vm.data.images">
+    <img ng-src="{{vm.getImageSrc(image)}}" alt="">
+    <md-grid-tile-footer>
+      <h3>{{image.name}}</h3>
+    </md-grid-tile-footer>
+  </md-grid-tile>
+</md-grid-list>
+
+

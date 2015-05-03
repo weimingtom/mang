@@ -10,6 +10,7 @@
   function FileBrowserCtrl ($routeParams, $location, FilesSvc) {
     var vm = this;
     vm.navigateTo = navigateTo;
+    vm.getImageSrc = FilesSvc.getImageSrc;
 
     activate();
 

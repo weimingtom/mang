@@ -55,7 +55,9 @@ header{
   text-align: center;
 }
 
-
+.browser-folders{
+  margin-bottom: 20px;
+}
 .folder-tile{
   background-color: white;
   cursor: pointer;
@@ -72,6 +74,17 @@ header{
 .folder-tile h3{
   display: block;
 }
+
+.browser-images md-grid-tile{
+  overflow: hidden;
+}
+.browser-images img{
+  flex-shrink: 0;
+  max-width: 200%;
+  max-height: 200%;
+  cursor: pointer;
+}
+
 
 
 .clearfix:after {
