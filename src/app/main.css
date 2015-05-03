@@ -10,7 +10,7 @@ body{
 
 body main {
   padding: 20px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .md-sidenav-backdrop.md-opaque.ng-scope.md-default-theme{

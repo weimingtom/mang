@@ -14,29 +14,17 @@
     activate();
 
     function activate () {
-      vm.data = {};
       var path = decodeURIComponent($routeParams.path);
-      console.log(path, 'recoge')
-      if (path != 'root')
-        vm.data = FilesSvc.getInitialData(path);
-      else
-        vm.data = FilesSvc.getInitialData('/');
+      if (path == 'root')
+        path = '/';
+      vm.data = FilesSvc.getData(path);
     }
 
     function navigateTo (url) {
-      url = _getUrl(url);
-      $location.path(url);
-    }
-
-    function _getUrl (url) {
-      var newUrl = '';
       if (vm.data.path != '/')
-        newUrl = vm.data.path + url;
-      else
-        newUrl = url;
-      newUrl = encodeURIComponent(newUrl);
-      // newUrl = 'browser/' + newUrl;
-      return newUrl;
+        url = vm.data.path + url;
+      url = encodeURIComponent(url);
+      $location.path(url);
     }
 
 
