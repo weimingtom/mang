@@ -25,6 +25,7 @@
       if (vm.data.path != '/')
         url = vm.data.path + url;
       url = encodeURIComponent(url);
+      vm.data = {};
       $location.path(url);
     }
 

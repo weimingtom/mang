@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="mang">
 <head>
   <meta charset="UTF-8">
   <title>Hello world</title>
@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
   <link rel="stylesheet" href="app/main.css">
 </head>
-<body ng-app="mang" layout="column" layout-fill>
+<body layout="column" layout-fill ng-controller="AppCtrl">
 
   <div ng-include="'app/base/header.tmpl.html'"></div>
   <div ng-include="'app/base/menu.tmpl.html'"></div>
