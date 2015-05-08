@@ -42,7 +42,7 @@
     function _filterFiles (data) {
       var dirs = [];
       var images = [];
-      for (var i = 0; i < data.length - 1; i++) {
+      for (var i = 0; i < data.length; i++) {
         /**
          * When mellow read the directory data assign a size value for each item,
          * if is a file item.size would be the file size in kb,
