@@ -33,20 +33,39 @@
         .when('/:path', {
           templateUrl: 'app/file-browser/file-browser.tmlp.html',
           controller: 'FileBrowserCtrl',
-          controllerAs: 'vm'
+          controllerAs: 'vm',
+          resolve: {
+            FilesPrepSvc: FilesPrepSvc
+          }
         })
 
+  }
+
+  FilesPrepSvc.$inject = ['$q', '$route', 'FilesSvc'];
+  function FilesPrepSvc ($q, $route, FilesSvc){
+    var path = $route.current.params.path;
+    path = decodeURIComponent(path);
+    if (path == 'root')
+      path = '/';
+    return FilesSvc.getData(path);
   }
 
   app.controller('AppCtrl', AppCtrl);
 
   function AppCtrl ($rootScope) {
-    $rootScope.$on('$routeChangeStart', function(){
-      console.log('loading!!');
+    $rootScope.$on('$routeChangeStart', function(e, curr, prev){
+      if (curr.$$route && curr.$$route.resolve) {
+        // Show a loading message until promises aren't resolved
+        $rootScope.loadingView = true;
+      }
     });
 
-    $rootScope.$on('$routeChangeSuccess', function(){
-      console.log('loaded!!');
+    $rootScope.$on('$routeChangeSuccess', function(e, curr, prev){
+      $rootScope.loadingView = false;
+    });
+
+    $rootScope.$on("$routeChangeError", function (e, curr, prev, rejection) {
+      alert(rejection);
     });
   }
 

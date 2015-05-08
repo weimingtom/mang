@@ -5,7 +5,9 @@
     .module('mang')
     .factory('FilesSvc', FilesSvc);
 
-  function FilesSvc () {
+  FilesSvc.$inject = ['$q', '$timeout'];
+
+  function FilesSvc ($q, $timeout) {
     var mellow = require('mellow');
     var _AllowedExt = ['.jpg', '.png', '.gif'];
 
@@ -18,8 +20,24 @@
     return service;
 
     function getData (path) {
-      _setData(path);
-      return service.data;
+      var deffered = $q.defer();
+
+      $timeout(function () {
+        if (path != '/')
+          path = mellow.pathToWin('/' + path);
+        mellow.read(path, function (err, data){
+          try {
+            _filterFiles(data.files);
+            service._path = data.path;
+            service.data.path = _setPath(data.path);
+            deffered.resolve(service.data);
+          }catch(err){
+            deffered.reject(err);
+          }
+        });
+      }, 1000);
+
+      return deffered.promise;
     }
 
     function _setData (path){

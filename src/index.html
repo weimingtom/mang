@@ -12,7 +12,10 @@
   <div ng-include="'app/base/header.tmpl.html'"></div>
   <div ng-include="'app/base/menu.tmpl.html'"></div>
 
-  <main flex ng-view></main>
+  <div layout="row" layout-align="space-around center" ng-show="loadingView" flex>
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
+  <main flex ng-view ng-hide="loadingView"></main>
 
   <!-- JS libs -->
   <script src="bower_components/angular/angular.js"></script>
