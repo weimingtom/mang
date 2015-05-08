@@ -22,6 +22,8 @@
     function getData (path) {
       var deffered = $q.defer();
 
+      // timeout added to because too quick of a response
+      //  can feel less magical to the user
       $timeout(function () {
         if (path != '/')
           path = mellow.pathToWin('/' + path);
@@ -32,22 +34,12 @@
             service.data.path = _setPath(data.path);
             deffered.resolve(service.data);
           }catch(err){
-            deffered.reject(err);
+            deffered.reject("can't read data from that directory");
           }
         });
-      }, 1000);
+      }, 500);
 
       return deffered.promise;
-    }
-
-    function _setData (path){
-      if (path != '/')
-        path = mellow.pathToWin('/' + path);
-      mellow.read(path, function (err, data){
-        _filterFiles(data.files);
-        service._path = data.path;
-        service.data.path = _setPath(data.path);
-      });
     }
 
     function _setPath (path) {

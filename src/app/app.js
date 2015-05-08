@@ -52,7 +52,7 @@
 
   app.controller('AppCtrl', AppCtrl);
 
-  function AppCtrl ($rootScope) {
+  function AppCtrl ($rootScope, $location) {
     $rootScope.$on('$routeChangeStart', function(e, curr, prev){
       if (curr.$$route && curr.$$route.resolve) {
         // Show a loading message until promises aren't resolved
@@ -66,6 +66,10 @@
 
     $rootScope.$on("$routeChangeError", function (e, curr, prev, rejection) {
       alert(rejection);
+      var path = prev.$$route.originalPath.replace(":path", prev.params.path);
+      // path
+      console.log(prev);
+      $location.path(path);
     });
   }
 
