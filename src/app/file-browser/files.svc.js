@@ -42,6 +42,7 @@
       return deffered.promise;
     }
 
+    // changing the mellow default path, to the url path used in the app
     function _setPath (path) {
       path = path.replace('\\/', '/');
       path = path.replace(':', '');

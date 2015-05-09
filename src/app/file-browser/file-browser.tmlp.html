@@ -3,7 +3,7 @@
         md-row-height="1:1"
         md-gutter="12px" md-gutter-gt-sm="8px" class="browser-folders ng-clock">
   <md-grid-tile ng-repeat="dir in vm.data.dirs" class="folder-tile"
-                ng-click="vm.navigateTo(dir.name)">
+                ng-click="vm.navigateTo(dir.name)" title="{{dir.name}}">
     <md-icon md-svg-icon="file:folder"></md-icon>
     <md-grid-tile-footer>
       <h3>{{dir.name}}</h3>
@@ -15,7 +15,7 @@
         md-cols-sm="2" md-cols-md="4" md-cols-gt-md="8"
         md-row-height="1:1"
         md-gutter="12px" md-gutter-gt-sm="8px" class="browser-images ng-clock">
-  <md-grid-tile ng-repeat="image in vm.data.images">
+  <md-grid-tile ng-repeat="image in vm.data.images" title="{{image.name}}">
     <img ng-src="{{vm.getImageSrc(image)}}" alt="">
     <md-grid-tile-footer>
       <h3>{{image.name}}</h3>

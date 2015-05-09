@@ -16,15 +16,6 @@
     vm.data = FilesPrepSvc;
     $rootScope.$$phase || $rootScope.$apply();
 
-    // activate();
-
-    // function activate () {
-    //   var path = decodeURIComponent($routeParams.path);
-    //   if (path == 'root')
-    //     path = '/';
-    //   vm.data = FilesSvc.getData(path);
-    // }
-
     function navigateTo (url) {
       if (vm.data.path != '/')
         url = vm.data.path + url;
