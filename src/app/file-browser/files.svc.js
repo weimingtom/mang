@@ -5,7 +5,9 @@
     .module('mang')
     .factory('FilesSvc', FilesSvc);
 
-  function FilesSvc () {
+  FilesSvc.$inject = ['$q', '$timeout'];
+
+  function FilesSvc ($q, $timeout) {
     var mellow = require('mellow');
     var _AllowedExt = ['.jpg', '.png', '.gif'];
 
@@ -18,20 +20,29 @@
     return service;
 
     function getData (path) {
-      _setData(path);
-      return service.data;
+      var deffered = $q.defer();
+
+      // timeout added to because too quick of a response
+      //  can feel less magical to the user
+      $timeout(function () {
+        if (path != '/')
+          path = mellow.pathToWin('/' + path);
+        mellow.read(path, function (err, data){
+          try {
+            _filterFiles(data.files);
+            service._path = data.path;
+            service.data.path = _setPath(data.path);
+            deffered.resolve(service.data);
+          }catch(err){
+            deffered.reject("can't read data from that directory");
+          }
+        });
+      }, 500);
+
+      return deffered.promise;
     }
 
-    function _setData (path){
-      if (path != '/')
-        path = mellow.pathToWin('/' + path);
-      mellow.read(path, function (err, data){
-        _filterFiles(data.files);
-        service._path = data.path;
-        service.data.path = _setPath(data.path);
-      });
-    }
-
+    // changing the mellow default path, to the url path used in the app
     function _setPath (path) {
       path = path.replace('\\/', '/');
       path = path.replace(':', '');

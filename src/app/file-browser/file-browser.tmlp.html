@@ -1,9 +1,9 @@
 <md-grid-list
         md-cols-sm="2" md-cols-md="4" md-cols-gt-md="8"
         md-row-height="1:1"
-        md-gutter="12px" md-gutter-gt-sm="8px" ng-class="browser-folders">
-  <md-grid-tile ng-repeat="dir in vm.data.dirs" class="folder-tile"
-                ng-click="vm.navigateTo(dir.name)">
+        md-gutter="12px" md-gutter-gt-sm="8px" class="browser-folders ng-clock">
+  <md-grid-tile ng-repeat="dir in vm.data.dirs track by $index" class="folder-tile"
+                ng-click="vm.navigateTo(dir.name)" title="{{dir.name}}">
     <md-icon md-svg-icon="file:folder"></md-icon>
     <md-grid-tile-footer>
       <h3>{{dir.name}}</h3>
@@ -14,9 +14,9 @@
 <md-grid-list
         md-cols-sm="2" md-cols-md="4" md-cols-gt-md="8"
         md-row-height="1:1"
-        md-gutter="12px" md-gutter-gt-sm="8px" class="browser-images">
-  <md-grid-tile ng-repeat="image in vm.data.images">
-    <img ng-src="{{vm.getImageSrc(image)}}" alt="">
+        md-gutter="12px" md-gutter-gt-sm="8px" class="browser-images ng-clock">
+  <md-grid-tile ng-repeat="image in vm.data.images track by $index" title="{{image.name}}">
+    <img img-lazy-src="{{vm.getImageSrc(image)}}" alt="" width="200%" height="">
     <md-grid-tile-footer>
       <h3>{{image.name}}</h3>
     </md-grid-tile-footer>

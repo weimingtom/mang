@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="mang">
 <head>
   <meta charset="UTF-8">
   <title>Hello world</title>
@@ -7,14 +7,18 @@
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
   <link rel="stylesheet" href="app/main.css">
 </head>
-<body ng-app="mang" layout="column" layout-fill>
+<body layout="column" layout-fill ng-controller="AppCtrl">
 
   <div ng-include="'app/base/header.tmpl.html'"></div>
   <div ng-include="'app/base/menu.tmpl.html'"></div>
 
-  <main flex ng-view></main>
+  <div layout="row" layout-align="space-around center" ng-show="loadingView" flex>
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
+  <main flex ng-view ng-hide="loadingView"></main>
 
   <!-- JS libs -->
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-aria/angular-aria.min.js"></script>
   <script src="bower_components/angular-animate/angular-animate.min.js"></script>
@@ -22,6 +26,7 @@
   <script src="bower_components/angular-material/angular-material.min.js"></script>
   <!-- App -->
   <script src="app/app.js"></script>
+  <script src="app/base/image-lazy-loading.dir.js"></script>
   <script src="app/file-browser/files.svc.js"></script>
   <script src="app/base/header.ctrl.js"></script>
   <script src="app/base/menu.ctrl.js"></script>

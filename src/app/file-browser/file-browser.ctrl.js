@@ -5,26 +5,22 @@
     .module('mang')
     .controller('FileBrowserCtrl', FileBrowserCtrl);
 
-  FileBrowserCtrl.$inject = ['$routeParams', '$location','FilesSvc'];
+  FileBrowserCtrl.$inject = ['$rootScope', '$routeParams', '$location', 'FilesSvc', 'FilesPrepSvc'];
 
-  function FileBrowserCtrl ($routeParams, $location, FilesSvc) {
+  function FileBrowserCtrl ($rootScope, $routeParams, $location, FilesSvc, FilesPrepSvc) {
     var vm = this;
     vm.navigateTo = navigateTo;
     vm.getImageSrc = FilesSvc.getImageSrc;
 
-    activate();
 
-    function activate () {
-      var path = decodeURIComponent($routeParams.path);
-      if (path == 'root')
-        path = '/';
-      vm.data = FilesSvc.getData(path);
-    }
+    vm.data = FilesPrepSvc;
+    $rootScope.$$phase || $rootScope.$apply();
 
     function navigateTo (url) {
       if (vm.data.path != '/')
         url = vm.data.path + url;
       url = encodeURIComponent(url);
+      vm.data = {};
       $location.path(url);
     }
 
