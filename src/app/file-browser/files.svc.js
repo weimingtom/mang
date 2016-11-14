@@ -81,6 +81,7 @@
     function getImageSrc (img) {
       var src = service._path + img.name;
       src = encodeURI(src);
+      src = src.replace('%5C', '/');
       src = src.replace('#', '%23');
       return src;
     }
