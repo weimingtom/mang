@@ -52,7 +52,7 @@
             var ctrl= document.querySelector('main');  
             if (ctrl) {
                 var scope = angular.element(ctrl).scope(); 
-                scope.$broadcast('$fromSubControllerClick', 'hello');
+                scope.$broadcast('$upFolderClick');
             }
         }
     }

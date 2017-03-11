@@ -23,24 +23,33 @@
                 url = vm.data.path + url;
             url = encodeURIComponent(url);
             vm.data = {};
+            console.log("navigateTo:" + url);
             $location.path(url);
         }
 
-        $scope.$on('$fromSubControllerClick', function(e, data){
+        $scope.$on('$upFolderClick', function(e, data){
             //console.log(data); // hello
-            var url = "";
             console.log("up path:" + vm.data.path);
-            if (vm.data.path != '/') {
-                var k = vm.data.path;
-                k = k.substring(0, k.length - 1);
-                if (k) {
-                    url = k.substring(0, k.lastIndexOf('/') + 1);
+            var url = vm.data.path;
+            if (url && url !== '/') {
+                url = url.replace(/\\/g, '/');
+                if (url.charAt(url.length - 1) === '/') {
+                    url = url.substring(0, url.length - 1);
                 }
+                if (url.lastIndexOf('/') > 0) {
+                    url = url.substring(0, url.lastIndexOf('/') + 1);
+                } else {
+                    url = "/";
+                }
+            } else {
+                url = "/";
             }
-            console.log("up:" + k);
-            url = encodeURIComponent(url);
-            vm.data = {};
-            $location.path(url);
+            console.log("up:" + url);
+            if (url !== vm.data.path) {
+                url = encodeURIComponent(url);
+                vm.data = {};
+                $location.path(url);
+            }
         });
     }
 
