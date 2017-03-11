@@ -15,7 +15,7 @@
       data: {},
       getData: getData,
       getImageSrc: getImageSrc
-    }
+    };
 
     return service;
 
@@ -33,7 +33,7 @@
             service._path = data.path;
             service.data.path = _setPath(data.path);
             deffered.resolve(service.data);
-          }catch(err){
+          }catch(e){
             deffered.reject("can't read data from that directory");
           }
         });

@@ -1,0 +1,20 @@
+{
+    //Brackets jshint插件用配置文件
+    "-W009": true, // [], new Array() 
+    "-W010": true, // {}, new Object()  
+    "-W030": true,
+    "-W041": true, // Use === to compare with null
+    "-W060": true, // document.write can be a form of eval  
+    //"-W086": true, // Expected a 'break' statement before case  
+    "-W069": true, //['id'] is better written in dot notation (W069)
+    "globals": {
+        "alert": false,
+        "angular": false,
+        "jQuery": false,
+        "module": false,
+        "window": false,
+        "require": false,
+        "console": false,
+        "document": false //请不要用逗号结束
+    }
+}

@@ -1,18 +1,22 @@
 <header ng-controller="HeaderCtrl as vm">
-  <div id="system-bar" class="clearfix" >
-    <div class="controls">
-      <md-icon md-svg-icon="content:remove" ng-click="vm.minimize()"></md-icon>
-      <md-icon md-svg-icon="navigation:fullscreen" ng-click="vm.maximize()"></md-icon>
-      <md-icon md-svg-icon="content:clear" ng-click="vm.close()"></md-icon>
+    <div id="system-bar" class="clearfix">
+        <div class="controls">
+            <md-icon md-svg-icon="content:remove" ng-click="vm.minimize()"></md-icon>
+            <md-icon md-svg-icon="navigation:fullscreen" ng-click="vm.maximize()"></md-icon>
+            <md-icon md-svg-icon="content:clear" ng-click="vm.close()"></md-icon>
+        </div>
     </div>
-  </div>
-  <md-toolbar>
-    <div class="md-toolbar-tools">
-      <md-button class="md-icon-button" aria-label="menu" ng-click="vm.openMenu()">
-        <md-icon md-svg-icon="navigation:menu"></md-icon>
-      </md-button>
-      <h2>
-        <span class="logo">Mang</span>
-      </h2>
-  </md-toolbar>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="menu" ng-click="vm.openMenu()">
+                <md-icon md-svg-icon="navigation:menu"></md-icon>
+            </md-button>
+            <h2>
+                <span class="logo">Mang</span>
+            </h2>
+            <span flex></span>
+            <md-button class="md-raised" aria-label="Up Folder" ng-click="vm.upFolder()">
+                Up Folder
+            </md-button>
+    </md-toolbar>
 </header>
